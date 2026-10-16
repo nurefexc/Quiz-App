@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Register') }} - Quiz App{% endblock %}
+{% block content %}
+<div class="hero-section">
+    <h1 class="hero-title">{{ _('Register') }}</h1>
+    <p class="lead">{{ _('Create an account to join quiz events!') }}</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-5">
+        <div class="card p-3 p-sm-4">
+            <div class="card-body">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.username.label(class='form-label') }}
+                        {{ form.username(class='form-control', placeholder=_('Choose a username'), required=True, autofocus=True) }}
+                        {% for error in form.username.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.email.label(class='form-label') }}
+                        {{ form.email(class='form-control', placeholder=_('Enter your email'), required=True) }}
+                        {% for error in form.email.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.password.label(class='form-label') }}
+                        {{ form.password(class='form-control', placeholder=_('Create a password'), required=True) }}
+                        {% for error in form.password.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-4">
+                        {{ form.password2.label(class='form-label') }}
+                        {{ form.password2(class='form-control', placeholder=_('Repeat your password'), required=True) }}
+                        {% for error in form.password2.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    {{ form.submit(class='btn btn-primary btn-lg w-100') }}
+                </form>
+            </div>
+        </div>
+        <p class="text-center mt-4 text-secondary">
+            {{ _('Already have an account?') }} <a href="{{ url_for('auth.login') }}" class="text-primary fw-semibold">{{ _('Sign in') }}</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

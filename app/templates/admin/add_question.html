@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Add Question') }} - Quiz App{% endblock %}
+{% block content %}
+<div class="hero-section">
+    <h1 class="hero-title">{{ _('Add Question to') }}: {{ quiz.title }}</h1>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+        <div class="card p-3 p-sm-4 mb-4">
+            <div class="card-body">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.group_id.label(class='form-label') }}
+                        {{ form.group_id(class='form-select') }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.question_text.label(class='form-label') }}
+                        {{ form.question_text(class='form-control', rows=3, placeholder=_('Enter question text here...'), required=True) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.question_type.label(class='form-label') }}
+                        {{ form.question_type(class='form-select', id='question_type') }}
+                    </div>
+                    
+                    <div id="options-section">
+                        <div class="mb-3">
+                            {{ form.option_a.label(class='form-label') }}
+                            {{ form.option_a(class='form-control', placeholder=_('Option A')) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.option_b.label(class='form-label') }}
+                            {{ form.option_b(class='form-control', placeholder=_('Option B')) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.option_c.label(class='form-label') }}
+                            {{ form.option_c(class='form-control', placeholder=_('Option C')) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.option_d.label(class='form-label') }}
+                            {{ form.option_d(class='form-control', placeholder=_('Option D')) }}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3" id="correct-answer-single-section">
+                        {{ form.correct_answer.label(class='form-label') }}
+                        {{ form.correct_answer(class='form-control', placeholder=_('a, b, c, d or comma-separated for multiple')) }}
+                        <small class="text-secondary d-block mt-1">{{ _('For multiple select: comma-separated like a,b,c') }}</small>
+                    </div>
+                    
+                    <div class="mb-3" id="correct-answers-section" style="display: none;">
+                        {{ form.correct_answers.label(class='form-label') }}
+                        {{ form.correct_answers(class='form-control', rows=4, placeholder=_('Enter correct answers (one per line)')) }}
+                        <small class="text-secondary d-block mt-1">{{ _('For free-text questions, enter all acceptable answers (one per line)') }}</small>
+                    </div>
+                    
+                    <div class="mb-3" id="review-section" style="display: none;">
+                        <div class="form-check">
+                            {{ form.requires_review(class='form-check-input', id='requires_review') }}
+                            {{ form.requires_review.label(class='form-check-label', for='requires_review') }}
+                        </div>
+                        <small class="text-secondary d-block mt-1">{{ _('Enable manual review for free-text answers') }}</small>
+                    </div>
+                    
+                    <div class="mb-4">
+                        {{ form.points.label(class='form-label') }}
+                        {{ form.points(class='form-control', type='number', min='1') }}
+                    </div>
+                    
+                    <div class="d-flex gap-2 flex-wrap">
+                        {{ form.submit(class='btn btn-primary btn-lg flex-grow-1') }}
+                        <a href="{{ url_for('admin.edit_quiz', quiz_id=quiz.id) }}" class="btn btn-secondary btn-lg">{{ _('Cancel') }}</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const questionTypeSelect = document.getElementById('question_type');
+    const optionsSection = document.getElementById('options-section');
+    const singleAnswerSection = document.getElementById('correct-answer-single-section');
+    const correctAnswersSection = document.getElementById('correct-answers-section');
+    const reviewSection = document.getElementById('review-section');
+
+    function updateVisibility() {
+        const type = questionTypeSelect ? questionTypeSelect.value : 'multiple_choice';
+        if (type === 'free_text') {
+            if (optionsSection) optionsSection.style.display = 'none';
+            if (singleAnswerSection) singleAnswerSection.style.display = 'none';
+            if (correctAnswersSection) correctAnswersSection.style.display = 'block';
+            if (reviewSection) reviewSection.style.display = 'block';
+        } else {
+            if (optionsSection) optionsSection.style.display = 'block';
+            if (singleAnswerSection) singleAnswerSection.style.display = 'block';
+            if (correctAnswersSection) correctAnswersSection.style.display = 'none';
+            if (reviewSection) reviewSection.style.display = 'none';
+        }
+    }
+
+    if (questionTypeSelect) {
+        questionTypeSelect.addEventListener('change', updateVisibility);
+        updateVisibility();
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Create Quiz') }} - Quiz App{% endblock %}
+{% block content %}
+<div class="hero-section">
+    <h1 class="hero-title">{{ _('Create Quiz') }}</h1>
+    <p class="lead">{{ _('Create a new quiz and add questions') }}</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="card p-3 p-sm-4 mb-4">
+            <div class="card-body">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.title.label(class='form-label') }}
+                        {{ form.title(class='form-control', placeholder=_('Enter quiz title'), required=True, autofocus=True) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.description.label(class='form-label') }}
+                        {{ form.description(class='form-control', rows=3, placeholder=_('Enter quiz description')) }}
+                    </div>
+                    <div class="mb-3 p-3 rounded bg-black bg-opacity-25 border border-secondary border-opacity-25">
+                        <h6 class="text-light mb-3 fw-bold">{{ _('Quiz Settings & Feedback') }}</h6>
+                        <div class="form-check form-switch mb-2">
+                            {{ form.instant_feedback(class="form-check-input") }}
+                            <label class="form-check-label ms-2 text-light">{{ form.instant_feedback.label }}</label>
+                            <small class="text-secondary d-block">{{ _('Show immediate correct/incorrect feedback right after answering each question.') }}</small>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            {{ form.show_score_at_end(class="form-check-input") }}
+                            <label class="form-check-label ms-2 text-light">{{ form.show_score_at_end.label }}</label>
+                            <small class="text-secondary d-block">{{ _('Display total earned points and percentage on the final quiz summary page.') }}</small>
+                        </div>
+                        <div class="form-check form-switch">
+                            {{ form.show_correct_answers_at_end(class="form-check-input") }}
+                            <label class="form-check-label ms-2 text-light">{{ form.show_correct_answers_at_end.label }}</label>
+                            <small class="text-secondary d-block">{{ _('Display correct answers and comparison on the final quiz summary page.') }}</small>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2 flex-wrap">
+                        {{ form.submit(class='btn btn-primary btn-lg flex-grow-1') }}
+                        <a href="{{ url_for('admin.dashboard') }}" class="btn btn-secondary btn-lg">{{ _('Cancel') }}</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

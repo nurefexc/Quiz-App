@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Edit Quiz') }}: {{ quiz.title }} - Quiz App{% endblock %}
+{% block content %}
+<div class="hero-section">
+    <h1 class="hero-title">{{ _('Edit Quiz') }}: {{ quiz.title }}</h1>
+    <p class="lead">{{ quiz.description or _('No description available.') }}</p>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12 col-lg-8">
+        <div class="card p-3 p-sm-4 mb-4">
+            <h5 class="text-light mb-3 fw-bold">{{ _('Quiz Details & Settings') }}</h5>
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ form.title.label(class='form-label') }}
+                    {{ form.title(class='form-control', required=True) }}
+                </div>
+                <div class="mb-3">
+                    {{ form.description.label(class='form-label') }}
+                    {{ form.description(class='form-control', rows=2) }}
+                </div>
+                <div class="p-3 rounded bg-black bg-opacity-25 border border-secondary border-opacity-25 mb-3">
+                    <h6 class="text-light mb-3 fw-semibold">{{ _('Feedback & End Screen Options') }}</h6>
+                    <div class="form-check form-switch mb-2">
+                        {{ form.instant_feedback(class="form-check-input") }}
+                        <label class="form-check-label ms-2 text-light">{{ form.instant_feedback.label }}</label>
+                        <small class="text-secondary d-block">{{ _('Show immediate correct/incorrect feedback right after answering each question.') }}</small>
+                    </div>
+                    <div class="form-check form-switch mb-2">
+                        {{ form.show_score_at_end(class="form-check-input") }}
+                        <label class="form-check-label ms-2 text-light">{{ form.show_score_at_end.label }}</label>
+                        <small class="text-secondary d-block">{{ _('Display total earned points and percentage on the final quiz summary page.') }}</small>
+                    </div>
+                    <div class="form-check form-switch">
+                        {{ form.show_correct_answers_at_end(class="form-check-input") }}
+                        <label class="form-check-label ms-2 text-light">{{ form.show_correct_answers_at_end.label }}</label>
+                        <small class="text-secondary d-block">{{ _('Display correct answers and comparison on the final quiz summary page.') }}</small>
+                    </div>
+                </div>
+                <div>
+                    {{ form.submit(class='btn btn-primary px-4') }}
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-12 col-lg-4">
+        <div class="card p-3 p-sm-4 mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="text-light mb-0 fw-bold">{{ _('Question Groups / Pages') }}</h5>
+                <a href="{{ url_for('admin.add_group', quiz_id=quiz.id) }}" class="btn btn-sm btn-primary">+ {{ _('Add Group') }}</a>
+            </div>
+            {% if groups %}
+                <div class="list-group list-group-flush gap-2">
+                    {% for group in groups %}
+                    <div class="list-group-item rounded p-2 bg-black bg-opacity-25 border border-secondary border-opacity-25">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong class="text-light d-block">{{ group.name }}</strong>
+                                <small class="text-secondary">
+                                    {{ group.questions.count() }} {{ _('questions') }} &bull; 
+                                    {% if group.allow_backtrack %}
+                                        <span class="text-success">{{ _('Backtrack allowed') }}</span>
+                                    {% else %}
+                                        <span class="text-warning">{{ _('No backtrack') }}</span>
+                                    {% endif %}
+                                </small>
+                            </div>
+                            <div class="d-flex gap-1">
+                                <a href="{{ url_for('admin.edit_group', group_id=group.id) }}" class="btn btn-sm btn-info py-1 px-2">{{ _('Edit') }}</a>
+                                <form action="{{ url_for('admin.delete_group', group_id=group.id) }}" method="POST" class="d-inline">
+                                    <button type="submit" class="btn btn-sm btn-danger py-1 px-2">{{ _('Delete') }}</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-secondary small mb-0">{{ _('No groups created yet. All questions will appear on a single page by default.') }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="mb-4 d-flex gap-2 flex-wrap">
+    <a href="{{ url_for('admin.add_question', quiz_id=quiz.id) }}" class="btn btn-primary">
+        <span>+ {{ _('Add Question') }}</span>
+    </a>
+    <a href="{{ url_for('admin.add_group', quiz_id=quiz.id) }}" class="btn btn-info">
+        <span>+ {{ _('Add Group') }}</span>
+    </a>
+    <a href="{{ url_for('admin.dashboard') }}" class="btn btn-secondary">
+        <span>&larr; {{ _('Back to Dashboard') }}</span>
+    </a>
+</div>
+
+{% if questions %}
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <h5 class="mb-0 text-light">{{ _('Questions') }} ({{ questions|length }})</h5>
+            <small class="text-secondary">{{ _('Drag to reorder questions') }}</small>
+        </div>
+        <div class="card-body p-0">
+            <div id="questions-list" class="list-group list-group-flush gap-1 p-2">
+                {% for question in questions %}
+                <div class="list-group-item rounded question-item d-flex justify-content-between align-items-center flex-wrap gap-2" data-question-id="{{ question.id }}" draggable="true" style="cursor: grab;">
+                    <div class="d-flex align-items-center gap-3 flex-grow-1">
+                        <div class="drag-handle text-secondary" style="cursor: grab; padding: 0.25rem;">
+                            ☰
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
+                                <span class="badge bg-primary question-index-badge">#{{ loop.index }}</span>
+                                <strong class="text-light">{{ question.question_text[:70] }}{% if question.question_text|length > 70 %}...{% endif %}</strong>
+                                {% if question.question_type == 'free_text' %}
+                                    <span class="badge bg-info">{{ _('Free Text') }}</span>
+                                {% elif question.question_type == 'multiple_select' %}
+                                    <span class="badge bg-warning text-dark">{{ _('Multiple Select') }}</span>
+                                {% endif %}
+                            </div>
+                            <small class="text-secondary">{{ question.points }} {{ _('points') }}</small>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a href="{{ url_for('admin.edit_question', question_id=question.id) }}" class="btn btn-sm btn-info">{{ _('Edit') }}</a>
+                        <form action="{{ url_for('admin.delete_question', question_id=question.id) }}" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-danger">{{ _('Delete') }}</button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="card text-center py-5">
+        <div class="card-body">
+            <h5 class="card-title text-light">{{ _('No questions yet') }}</h5>
+            <p class="card-text text-secondary mb-4">{{ _('Add your first question to get started!') }}</p>
+            <a href="{{ url_for('admin.add_question', quiz_id=quiz.id) }}" class="btn btn-primary">{{ _('Add Question') }}</a>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const questionsList = document.getElementById('questions-list');
+    if (!questionsList) return;
+
+    let draggedItem = null;
+    
+    questionsList.addEventListener('dragstart', function(e) {
+        const item = e.target.closest('.question-item');
+        if (item) {
+            draggedItem = item;
+            item.style.opacity = '0.5';
+            e.dataTransfer.effectAllowed = 'move';
+        }
+    });
+    
+    questionsList.addEventListener('dragend', function(e) {
+        if (draggedItem) {
+            draggedItem.style.opacity = '1';
+            draggedItem = null;
+        }
+    });
+    
+    questionsList.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        if (!draggedItem) return;
+        const afterElement = getDragAfterElement(questionsList, e.clientY);
+        if (afterElement == null) {
+            questionsList.appendChild(draggedItem);
+        } else {
+            questionsList.insertBefore(draggedItem, afterElement);
+        }
+    });
+    
+    questionsList.addEventListener('drop', function(e) {
+        e.preventDefault();
+        saveNewOrder();
+    });
+    
+    function getDragAfterElement(container, y) {
+        const draggableElements = [...container.querySelectorAll('.question-item:not(.dragging)')];
+        
+        return draggableElements.reduce((closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = y - box.top - box.height / 2;
+            if (offset < 0 && offset > closest.offset) {
+                return { offset: offset, element: child };
+            } else {
+                return closest;
+            }
+        }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+    
+    function saveNewOrder() {
+        const items = [...document.querySelectorAll('.question-item')];
+        const questionIds = items.map(item => parseInt(item.dataset.questionId)).filter(id => !isNaN(id));
+        
+        fetch("{{ url_for('admin.reorder_questions', quiz_id=quiz.id) }}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ question_ids: questionIds })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.querySelectorAll('.question-item .question-index-badge').forEach((badge, index) => {
+                    badge.textContent = '#' + (index + 1);
+                });
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+});
+</script>
+{% endblock %}

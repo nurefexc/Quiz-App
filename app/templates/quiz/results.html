@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Quiz Results') }}: {{ event.name }} - Quiz App{% endblock %}
+{% block content %}
+<div class="hero-section text-center py-4">
+    <div class="d-inline-flex p-3 rounded-circle bg-primary bg-opacity-25 mb-3 border border-primary border-opacity-50">
+        <img src="{{ url_for('static', filename='icons/trophy.svg') }}" alt="Trophy" width="48" height="48">
+    </div>
+    <h1 class="hero-title mb-2">{{ _('Quiz Completed!') }}</h1>
+    <p class="lead text-secondary">{{ event.name }} &bull; {{ event.quiz.title }}</p>
+</div>
+
+<div class="row justify-content-center" id="results-container">
+    <div class="col-12 col-lg-10">
+        <!-- Loading State -->
+        <div id="results-loading" class="text-center py-5">
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+            <p class="text-secondary mt-3">{{ _('Loading your results...') }}</p>
+        </div>
+
+        <!-- Loaded Content -->
+        <div id="results-content" style="display: none;">
+            <!-- Score Overview Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-12 col-md-4">
+                    <div class="card p-4 text-center h-100">
+                        <span class="text-secondary small fw-bold text-uppercase mb-1">{{ _('Team') }}</span>
+                        <h3 class="text-light fw-bold mb-0" id="res-team-name">-</h3>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4" id="score-card-col">
+                    <div class="card p-4 text-center h-100">
+                        <span class="text-secondary small fw-bold text-uppercase mb-1">{{ _('Your Score') }}</span>
+                        <h2 class="text-primary fw-bold mb-0" id="res-score">-</h2>
+                        <small class="text-secondary mt-1" id="res-percentage">-</small>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="card p-4 text-center h-100">
+                        <span class="text-secondary small fw-bold text-uppercase mb-1">{{ _('Team Total Score') }}</span>
+                        <h2 class="text-warning fw-bold mb-0" id="res-team-score">-</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Breakdown Accordion / List -->
+            <div class="card mb-4" id="breakdown-card">
+                <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                    <h5 class="mb-0 text-light fw-bold">{{ _('Question Breakdown') }}</h5>
+                    <span class="badge bg-secondary" id="res-answered-badge">0/0 answered</span>
+                </div>
+                <div class="card-body p-3 p-sm-4" id="questions-summary-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="text-center mb-5 d-flex justify-content-center gap-3 flex-wrap">
+                <a href="{{ url_for('quiz.event_detail', event_id=event.id) }}" class="btn btn-secondary px-4 py-2">
+                    <span>&larr; {{ _('Event Details') }}</span>
+                </a>
+                <a href="{{ url_for('main.index') }}" class="btn btn-primary px-4 py-2">
+                    <span>{{ _('Home / Events') }}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const eventId = parseInt("{{ event.id }}", 10);
+    fetch('/api/events/' + eventId + '/results')
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('results-loading').style.display = 'none';
+            document.getElementById('results-content').style.display = 'block';
+
+            document.getElementById('res-team-name').textContent = data.team_name || '-';
+            document.getElementById('res-team-score').textContent = (data.team_score || 0) + ' pts';
+
+            if (data.show_score) {
+                document.getElementById('res-score').textContent = data.user_points_earned + ' / ' + data.total_points_possible + ' pts';
+                document.getElementById('res-percentage').textContent = data.percentage + '% (' + data.correct_count + '/' + data.total_questions + ' {{ _("correct") }})';
+            } else {
+                document.getElementById('score-card-col').style.display = 'none';
+            }
+
+            document.getElementById('res-answered-badge').textContent = data.answered_count + '/' + data.total_questions + ' {{ _("answered") }}';
+
+            const container = document.getElementById('questions-summary-list');
+            container.innerHTML = '';
+
+            data.questions.forEach((q, idx) => {
+                const item = document.createElement('div');
+                item.className = 'p-3 rounded mb-3 bg-black bg-opacity-25 border border-secondary border-opacity-25';
+                
+                let statusBadge = '';
+                if (!q.user_answer) {
+                    statusBadge = '<span class="badge bg-secondary">{{ _("Not Answered") }}</span>';
+                } else if (!q.is_reviewed) {
+                    statusBadge = '<span class="badge bg-warning text-dark">{{ _("Under Review") }}</span>';
+                } else if (q.is_correct) {
+                    statusBadge = '<span class="badge bg-success">{{ _("Correct") }} (+' + q.points_earned + ' pts)</span>';
+                } else {
+                    statusBadge = '<span class="badge bg-danger">{{ _("Incorrect") }} (0 pts)</span>';
+                }
+
+                let html = `
+                    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-primary">#${idx + 1}</span>
+                            <strong class="text-light">${escapeHtml(q.question_text)}</strong>
+                        </div>
+                        <div>${statusBadge}</div>
+                    </div>
+                `;
+
+                if (q.user_answer) {
+                    html += `
+                        <div class="small text-secondary mb-1">
+                            {{ _("Your Answer") }}: <strong class="text-light">${escapeHtml(q.user_answer)}</strong>
+                        </div>
+                    `;
+                }
+
+                if (data.show_correct_answers) {
+                    let correctDisplay = '';
+                    if (q.question_type === 'free_text') {
+                        correctDisplay = (q.correct_answers || []).join(', ');
+                    } else if (q.question_type === 'multiple_select' || q.question_type === 'multiple_choice') {
+                        correctDisplay = q.correct_answer || '';
+                    }
+                    if (correctDisplay) {
+                        html += `
+                            <div class="small text-success mt-1">
+                                ✓ {{ _("Correct Answer") }}: <strong>${escapeHtml(correctDisplay)}</strong>
+                            </div>
+                        `;
+                    }
+                }
+
+                item.innerHTML = html;
+                container.appendChild(item);
+            });
+        })
+        .catch(err => {
+            console.error('Error fetching quiz results:', err);
+            document.getElementById('results-loading').innerHTML = '<p class="text-danger">{{ _("Error loading results. Please try again.") }}</p>';
+        });
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+});
+</script>
+{% endblock %}

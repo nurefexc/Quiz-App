@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}{{ event.name }} - {{ _('Quiz') }}{% endblock %}
+{% block content %}
+<!-- Quiz App Container (loaded via API) -->
+<div id="quiz-app-container" data-event-id="{{ event.id }}" data-results-url="{{ url_for('quiz.quiz_results', event_id=event.id) }}">
+    <!-- Header Summary Bar -->
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+        <div>
+            <h1 class="hero-title mb-1 text-start" style="font-size: 2rem;">{{ event.name }}</h1>
+            <p class="text-secondary mb-0 fs-5" id="quiz-title-display">{{ event.quiz.title }}</p>
+        </div>
+        <div class="p-3 rounded bg-black bg-opacity-25 border border-secondary border-opacity-25 text-end ms-auto">
+            <div class="d-flex align-items-center gap-2 mb-1 justify-content-end">
+                <img src="{{ url_for('static', filename='icons/users.svg') }}" alt="Users" width="18" height="18" class="icon-filter">
+                <span class="text-secondary">{{ _('Team') }}: <strong class="text-light" id="team-name-display">{{ current_user.team.name if current_user.team else '' }}</strong></span>
+            </div>
+            <div class="d-flex align-items-center gap-2 justify-content-end">
+                <img src="{{ url_for('static', filename='icons/star.svg') }}" alt="Score" width="18" height="18">
+                <span class="text-secondary">{{ _('Score') }}: <span class="score-display fs-4" id="team-score-display">{{ current_user.team.score if current_user.team else 0 }}</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress & Group Navigation Bar -->
+    <div class="quiz-progress-container mb-4 p-3 rounded bg-black bg-opacity-25 border border-secondary border-opacity-25">
+        <div class="d-flex justify-content-between align-items-center mb-2 small text-secondary fw-semibold flex-wrap gap-2">
+            <div class="d-flex align-items-center gap-2">
+                <span id="group-step-indicator" class="badge bg-primary fs-6">{{ _('Group 1 of 1') }}</span>
+                <span id="group-name-indicator" class="text-light fw-bold"></span>
+            </div>
+            <span id="quiz-progress-text">0/0 {{ _('answered') }}</span>
+        </div>
+        <div class="progress" style="height: 10px; background-color: rgba(255,255,255,0.1);">
+            <div class="progress-bar bg-primary" id="quiz-progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+
+    <!-- Group Questions Container -->
+    <div id="quiz-questions-view">
+        <div id="quiz-loading-spinner" class="text-center py-5">
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+            <p class="text-secondary mt-3">{{ _('Loading quiz questions...') }}</p>
+        </div>
+        <div id="group-questions-list"></div>
+    </div>
+
+    <!-- Group Navigation Buttons -->
+    <div class="d-flex justify-content-between align-items-center mt-4 mb-5 pt-3 border-top border-secondary border-opacity-25 flex-wrap gap-2" id="quiz-nav-controls" style="display: none !important;">
+        <button type="button" class="btn btn-secondary px-4 py-2" id="btn-prev-group">
+            <span>&larr; {{ _('Previous Group') }}</span>
+        </button>
+        <div class="ms-auto d-flex gap-2">
+            <button type="button" class="btn btn-primary px-4 py-2" id="btn-next-group">
+                <span>{{ _('Next Group') }} &rarr;</span>
+            </button>
+            <button type="button" class="btn btn-success px-4 py-2" id="btn-finish-quiz" style="display: none;">
+                <span>{{ _('Finish Quiz & See Results') }} &check;</span>
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+window.QUIZ_CONFIG = {
+    eventId: parseInt("{{ event.id }}", 10),
+    resultsUrl: "{{ url_for('quiz.quiz_results', event_id=event.id) }}",
+    i18n: {
+        group: "{{ _('Group') }}",
+        of: "{{ _('of') }}",
+        answered: "{{ _('answered') }}",
+        question: "{{ _('Question') }}",
+        points: "{{ _('points') }}",
+        freeText: "{{ _('Free Text') }}",
+        multipleSelect: "{{ _('Multiple Select') }}",
+        underReview: "{{ _('Under Review') }}",
+        correct: "{{ _('Correct') }}",
+        incorrect: "{{ _('Incorrect') }}",
+        yourAnswer: "{{ _('Your Answer') }}",
+        enterAnswerHere: "{{ _('Enter your answer here...') }}",
+        reviewNotice: "{{ _('This answer will be reviewed manually.') }}",
+        selectAllCorrect: "{{ _('Select all correct answers') }}",
+        submitAnswer: "{{ _('Submit Answer') }}",
+        submitting: "{{ _('Submitting...') }}",
+        answerSaved: "{{ _('Answer saved!') }}",
+        prevDisabledNotice: "{{ _('Returning to this group is disabled.') }}",
+        confirmFinish: "{{ _('Are you sure you want to finish the quiz? You will not be able to modify your answers afterwards.') }}"
+    }
+};
+</script>
+{% endblock %}

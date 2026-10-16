@@ -1,0 +1,1392 @@
+# HU translations for Quiz App
+msgid ""
+msgstr ""
+"Project-Id-Version: Quiz App 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-15 15:42+0200\n"
+"PO-Revision-Date: 2026-10-15 00:00+0000\n"
+"Last-Translator: Quiz App Team\n"
+"Language: hu\n"
+"Language-Team: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: app/__init__.py:27
+msgid "Please log in to access this page."
+msgstr "Kérjük, jelentkezz be az oldal eléréséhez."
+
+#: app/admin/forms.py:7 app/templates/admin/dashboard.html:24
+msgid "Title"
+msgstr "Cím"
+
+#: app/admin/forms.py:8 app/admin/forms.py:16 app/admin/forms.py:40
+#: app/templates/admin/dashboard.html:25
+msgid "Description"
+msgstr "Leírás"
+
+#: app/admin/forms.py:9
+msgid "Instant feedback on answers"
+msgstr "Azonnali visszajelzés a válaszokra"
+
+#: app/admin/forms.py:10
+msgid "Show score at quiz end"
+msgstr "Pontszám megjelenítése a kvíz végén"
+
+#: app/admin/forms.py:11
+msgid "Show correct answers at quiz end"
+msgstr "Helyes válaszok megjelenítése a kvíz végén"
+
+#: app/admin/forms.py:12
+msgid "Save Quiz"
+msgstr "Kvíz mentése"
+
+#: app/admin/forms.py:15
+msgid "Group Name"
+msgstr "Csoport neve"
+
+#: app/admin/forms.py:17
+msgid "Allow returning to previous group"
+msgstr "Visszalépés engedélyezése az előző csoportra"
+
+#: app/admin/forms.py:18
+msgid "Save Group"
+msgstr "Csoport mentése"
+
+#: app/admin/forms.py:21
+msgid "Question Group / Page"
+msgstr "Kérdéscsoport / Lap"
+
+#: app/admin/forms.py:22 app/templates/quiz/quiz.html:73
+msgid "Question"
+msgstr "Kérdés"
+
+#: app/admin/forms.py:23
+msgid "Question Type"
+msgstr "Kérdés típusa"
+
+#: app/admin/forms.py:24
+msgid "Multiple Choice"
+msgstr "Feleletválasztós (egyetlen válasz)"
+
+#: app/admin/forms.py:25 app/templates/admin/edit_quiz.html:117
+#: app/templates/quiz/quiz.html:75
+msgid "Free Text"
+msgstr "Szabad szavas válasz"
+
+#: app/admin/forms.py:26 app/templates/admin/edit_quiz.html:119
+#: app/templates/quiz/quiz.html:76
+msgid "Multiple Select"
+msgstr "Több válaszlehetőség"
+
+#: app/admin/forms.py:28 app/templates/admin/add_question.html:30
+#: app/templates/admin/edit_question.html:30
+msgid "Option A"
+msgstr "A opció"
+
+#: app/admin/forms.py:29 app/templates/admin/add_question.html:34
+#: app/templates/admin/edit_question.html:34
+msgid "Option B"
+msgstr "B opció"
+
+#: app/admin/forms.py:30 app/templates/admin/add_question.html:38
+#: app/templates/admin/edit_question.html:38
+msgid "Option C"
+msgstr "C opció"
+
+#: app/admin/forms.py:31 app/templates/admin/add_question.html:42
+#: app/templates/admin/edit_question.html:42
+msgid "Option D"
+msgstr "D opció"
+
+#: app/admin/forms.py:32
+msgid "Correct Answer (a,b,c,d or comma-separated)"
+msgstr "Helyes válasz (a, b, c, d vagy vesszővel elválasztva)"
+
+#: app/admin/forms.py:33
+msgid "Correct Answers (one per line for free-text)"
+msgstr "Helyes válaszok (soronként a szabad szavas kérdésekhez)"
+
+#: app/admin/forms.py:34
+msgid "Points"
+msgstr "Pontszám"
+
+#: app/admin/forms.py:35
+msgid "Requires Manual Review (for free-text)"
+msgstr "Kézi felülvizsgálatot igényel (szabad szavas)"
+
+#: app/admin/forms.py:36
+#, fuzzy
+msgid "Save Question"
+msgstr "Kérdés hozzáadása"
+
+#: app/admin/forms.py:39
+msgid "Event Name"
+msgstr "Esemény neve"
+
+#: app/admin/forms.py:41 app/templates/quiz/event_detail.html:29
+msgid "Start Time"
+msgstr "Kezdési idő"
+
+#: app/admin/forms.py:42 app/templates/quiz/event_detail.html:33
+msgid "End Time"
+msgstr "Befejezési idő"
+
+#: app/admin/forms.py:43 app/templates/events.html:92
+#: app/templates/index.html:92 app/templates/quiz/event_detail.html:37
+#: app/templates/quiz/quiz.html:2
+msgid "Quiz"
+msgstr "Kvíz"
+
+#: app/admin/forms.py:44 app/templates/admin/create_event.html:2
+#: app/templates/admin/create_event.html:5
+#: app/templates/admin/dashboard.html:57
+msgid "Create Event"
+msgstr "Esemény létrehozása"
+
+#: app/admin/forms.py:47 app/quiz/forms.py:7
+msgid "Team Name"
+msgstr "Csapat neve"
+
+#: app/admin/forms.py:48 app/quiz/forms.py:8
+msgid "Max Team Size"
+msgstr "Maximális csapatlétszám"
+
+#: app/admin/forms.py:49 app/templates/admin/dashboard.html:121
+#: app/templates/quiz/create_team.html:13
+msgid "Event"
+msgstr "Esemény"
+
+#: app/admin/forms.py:50 app/templates/admin/create_team.html:2
+#: app/templates/admin/create_team.html:5
+#: app/templates/admin/dashboard.html:111
+msgid "Create Team"
+msgstr "Csapat létrehozása"
+
+#: app/admin/routes.py:14
+msgid "Admin access required"
+msgstr "Adminisztrátori jogosultság szükséges."
+
+#: app/admin/routes.py:43
+msgid "Quiz created successfully"
+msgstr "A kvíz sikeresen létrejött."
+
+#: app/admin/routes.py:60
+#, fuzzy
+msgid "Quiz updated successfully"
+msgstr "A kérdés sikeresen frissítve."
+
+#: app/admin/routes.py:84
+msgid "Question group added successfully"
+msgstr "Kérdéscsoport sikeresen hozzáadva"
+
+#: app/admin/routes.py:99
+msgid "Question group updated successfully"
+msgstr "Kérdéscsoport sikeresen frissítve"
+
+#: app/admin/routes.py:113
+msgid "Question group deleted"
+msgstr "Kérdéscsoport törölve"
+
+#: app/admin/routes.py:123 app/admin/routes.py:167
+msgid "-- No Group (Default) --"
+msgstr "-- Nincs csoport (Alapértelmezett) --"
+
+#: app/admin/routes.py:145
+msgid "Question added successfully"
+msgstr "A kérdés sikeresen hozzáadva."
+
+#: app/admin/routes.py:157
+msgid "Question deleted"
+msgstr "A kérdés törölve."
+
+#: app/admin/routes.py:182
+msgid "Question updated successfully"
+msgstr "A kérdés sikeresen frissítve."
+
+#: app/admin/routes.py:231
+msgid "Event created successfully"
+msgstr "Az esemény sikeresen létrejött."
+
+#: app/admin/routes.py:243
+msgid "Event activated"
+msgstr "Esemény aktiválva."
+
+#: app/admin/routes.py:245
+msgid "Event deactivated"
+msgstr "Esemény deaktiválva."
+
+#: app/admin/routes.py:262
+msgid "Team created successfully"
+msgstr "A csapat sikeresen létrejött."
+
+#: app/admin/routes.py:273
+msgid "Team deleted"
+msgstr "A csapat törölve."
+
+#: app/api/routes.py:15 app/quiz/routes.py:22 app/quiz/routes.py:160
+msgid "Event is not active"
+msgstr "Az esemény jelenleg nem aktív."
+
+#: app/api/routes.py:18 app/quiz/routes.py:164
+msgid "You must join a team first"
+msgstr "Előbb csatlakoznod kell egy csapathoz."
+
+#: app/api/routes.py:35 app/api/routes.py:111
+#: app/templates/admin/dashboard.html:26 app/templates/admin/edit_quiz.html:101
+#: app/templates/quiz/event_detail.html:41
+msgid "Questions"
+msgstr "Kérdések"
+
+#: app/api/routes.py:99
+msgid "General Questions"
+msgstr "Általános kérdések"
+
+#: app/api/routes.py:162
+msgid "Question ID is required"
+msgstr "A kérdés azonosítója kötelező"
+
+#: app/api/routes.py:170 app/quiz/routes.py:192
+msgid "You have already answered this question"
+msgstr "Erre a kérdésre már válaszoltál."
+
+#: app/api/routes.py:227
+#, fuzzy
+msgid "Correct!"
+msgstr "Helyes"
+
+#: app/api/routes.py:227 app/quiz/routes.py:234
+msgid "Answer submitted! It will be reviewed manually."
+msgstr "Válasz elküldve! Kézi felülvizsgálat alatt áll."
+
+#: app/api/routes.py:227
+#, fuzzy
+msgid "Incorrect!"
+msgstr "Helytelen"
+
+#: app/api/routes.py:229 app/quiz/routes.py:241 app/templates/quiz/quiz.html:86
+msgid "Answer saved!"
+msgstr "Válasz elmentve!"
+
+#: app/auth/forms.py:8 app/auth/forms.py:14
+msgid "Username"
+msgstr "Felhasználónév"
+
+#: app/auth/forms.py:9 app/auth/forms.py:16
+msgid "Password"
+msgstr "Jelszó"
+
+#: app/auth/forms.py:10
+msgid "Remember Me"
+msgstr "Emlékezz rám"
+
+#: app/auth/forms.py:11 app/templates/auth/login.html:2
+#: app/templates/auth/login.html:5
+msgid "Sign In"
+msgstr "Bejelentkezés"
+
+#: app/auth/forms.py:15
+msgid "Email"
+msgstr "E-mail cím"
+
+#: app/auth/forms.py:17
+msgid "Repeat Password"
+msgstr "Jelszó ismétlése"
+
+#: app/auth/forms.py:18 app/templates/auth/register.html:2
+#: app/templates/auth/register.html:5 app/templates/base.html:76
+#: app/templates/quiz/event_detail.html:217
+msgid "Register"
+msgstr "Regisztráció"
+
+#: app/auth/forms.py:23
+msgid "Please use a different username."
+msgstr "Ez a felhasználónév már foglalt, kérlek válassz másikat."
+
+#: app/auth/forms.py:28
+msgid "Please use a different email address."
+msgstr "Ez az e-mail cím már foglalt, kérlek válassz másikat."
+
+#: app/auth/routes.py:17
+msgid "Invalid username or password"
+msgstr "Érvénytelen felhasználónév vagy jelszó."
+
+#: app/auth/routes.py:40
+msgid "Registration successful"
+msgstr "Sikeres regisztráció! Kérlek, jelentkezz be."
+
+#: app/quiz/forms.py:9
+#, fuzzy
+msgid "Register Team"
+msgstr "Regisztrálj itt"
+
+#: app/quiz/routes.py:26
+msgid "You are already in a team. You must leave your current team first."
+msgstr ""
+"Már tagja vagy egy csapatnak. Előbb el kell hagynod a jelenlegi "
+"csapatodat."
+
+#: app/quiz/routes.py:33
+msgid "A team with this name already exists for this event"
+msgstr "Már létezik ilyen nevű csapat ehhez az eseményhez"
+
+#: app/quiz/routes.py:47
+msgid "Team registered successfully! You are the team captain."
+msgstr "Csapat sikeresen regisztrálva! Te vagy a csapatkapitány."
+
+#: app/quiz/routes.py:58
+#, fuzzy
+msgid "This event is no longer active."
+msgstr "Az esemény jelenleg nem aktív."
+
+#: app/quiz/routes.py:63
+#, fuzzy, python-format
+msgid "Please log in or register to join the team: %(team)s"
+msgstr ""
+"Kérjük, jelentkezz be, hogy csatlakozhass egy csapathoz és részt vehess a"
+" kvízen."
+
+#: app/quiz/routes.py:68
+#, fuzzy
+msgid "You are already a member of this team."
+msgstr "Már tagja vagy egy csapatnak."
+
+#: app/quiz/routes.py:72
+msgid ""
+"You are already in another team. You can only belong to one team at a "
+"time."
+msgstr "Már egy másik csapat tagja vagy. Egyszerre csak egy csapathoz tartozhatsz."
+
+#: app/quiz/routes.py:77
+#, fuzzy
+msgid "This team is already full."
+msgstr "A csapat megtelt."
+
+#: app/quiz/routes.py:82
+#, python-format
+msgid "You have successfully joined %(team)s!"
+msgstr "Sikeresen csatlakoztál a(z) %(team)s csapathoz!"
+
+#: app/quiz/routes.py:90
+msgid "Only the team captain can remove members."
+msgstr "Csak a csapatkapitány távolíthat el tagokat."
+
+#: app/quiz/routes.py:94
+msgid "The captain cannot be removed from the team. Use leave team instead."
+msgstr "A kapitány nem távolítható el a csapatból. Használd a kilépést."
+
+#: app/quiz/routes.py:99
+#, fuzzy
+msgid "User is not in this team."
+msgstr "Nem vagy tagja ennek a csapatnak."
+
+#: app/quiz/routes.py:104
+#, python-format
+msgid "Member %(username)s has been removed from the team."
+msgstr "%(username)s tag el lett távolítva a csapatból."
+
+#: app/quiz/routes.py:112
+msgid "Only the team captain can regenerate the invite link."
+msgstr "Csak a csapatkapitány generálhat új meghívó linket."
+
+#: app/quiz/routes.py:117
+msgid "Invite link has been regenerated."
+msgstr "A meghívó link sikeresen újragenerálva."
+
+#: app/quiz/routes.py:124
+msgid "Joining teams is only possible via captain invite link."
+msgstr "Csapathoz csatlakozni csak a kapitány meghívó linkjével lehet."
+
+#: app/quiz/routes.py:132
+msgid "You are not in this team"
+msgstr "Nem vagy tagja ennek a csapatnak."
+
+#: app/quiz/routes.py:144
+#, python-format
+msgid "You left the team. Leadership has been transferred to %(user)s."
+msgstr "Elhagytad a csapatot. A vezetés átadva %(user)s számára."
+
+#: app/quiz/routes.py:148
+msgid "You left and dissolved the team."
+msgstr "Elhagytad a csapatot, és a csapat feloszlott."
+
+#: app/quiz/routes.py:150
+msgid "Left team successfully"
+msgstr "Sikeresen kiléptél a csapatból."
+
+#: app/quiz/routes.py:237
+msgid "Answer submitted! Correct"
+msgstr "Válasz elküldve! Helyes válasz!"
+
+#: app/quiz/routes.py:239
+msgid "Answer submitted! Incorrect"
+msgstr "Válasz elküldve! Sajnos helytelen."
+
+#: app/templates/base.html:30 app/templates/index.html:2
+msgid "Home"
+msgstr "Főoldal"
+
+#: app/templates/admin/dashboard.html:55 app/templates/base.html:36
+#: app/templates/events.html:2
+msgid "Events"
+msgstr "Események"
+
+#: app/templates/base.html:43
+msgid "Admin"
+msgstr "Adminisztráció"
+
+#: app/templates/base.html:51
+msgid "Language"
+msgstr "Nyelv"
+
+#: app/templates/base.html:69
+msgid "Logout"
+msgstr "Kijelentkezés"
+
+#: app/templates/base.html:73 app/templates/quiz/event_detail.html:216
+msgid "Login"
+msgstr "Bejelentkezés"
+
+#: app/templates/base.html:101
+msgid "Quiz App - All rights reserved."
+msgstr "Quiz App - Minden jog fenntartva."
+
+#: app/templates/events.html:7
+#, fuzzy
+msgid "Quiz Events"
+msgstr "Események"
+
+#: app/templates/events.html:9 app/templates/index.html:9
+msgid "Participate in exciting quiz events and test your knowledge!"
+msgstr "Vegyél részt izgalmas kvízeseményeken és teszteld a tudásodat!"
+
+#: app/templates/events.html:16 app/templates/index.html:16
+msgid "Active Events"
+msgstr "Aktív események"
+
+#: app/templates/admin/dashboard.html:81 app/templates/events.html:25
+#: app/templates/index.html:25 app/templates/landing.html:166
+#: app/templates/quiz/event_detail.html:22
+msgid "Active"
+msgstr "Aktív"
+
+#: app/templates/admin/edit_quiz.html:6 app/templates/events.html:31
+#: app/templates/events.html:85 app/templates/index.html:31
+#: app/templates/index.html:85 app/templates/landing.html:172
+#: app/templates/quiz/event_detail.html:9
+msgid "No description available."
+msgstr "Nincs elérhető leírás."
+
+#: app/templates/admin/dashboard.html:67 app/templates/events.html:34
+#: app/templates/index.html:34
+msgid "Start"
+msgstr "Kezdés"
+
+#: app/templates/admin/dashboard.html:68 app/templates/events.html:38
+#: app/templates/index.html:38
+msgid "End"
+msgstr "Befejezés"
+
+#: app/templates/admin/dashboard.html:109 app/templates/events.html:45
+#: app/templates/events.html:111 app/templates/index.html:45
+#: app/templates/index.html:111 app/templates/landing.html:176
+msgid "Teams"
+msgstr "Csapatok"
+
+#: app/templates/events.html:47 app/templates/index.html:47
+msgid "Join & Play"
+msgstr "Csatlakozás & Játék"
+
+#: app/templates/events.html:59 app/templates/index.html:59
+msgid "No Active Events"
+msgstr "Nincsenek aktív események"
+
+#: app/templates/events.html:60 app/templates/index.html:60
+#, fuzzy
+msgid ""
+"No active events at the moment. Check back later or browse past quizzes "
+"below!"
+msgstr "Jelenleg nincsenek aktív események. Nézz vissza később!"
+
+#: app/templates/events.html:70 app/templates/index.html:70
+#, fuzzy
+msgid "Past Quizzes & Events"
+msgstr "Aktív események"
+
+#: app/templates/events.html:79 app/templates/index.html:79
+#: app/templates/quiz/event_detail.html:24
+#, fuzzy
+msgid "Completed"
+msgstr "Kvíz befejezve!"
+
+#: app/templates/events.html:88 app/templates/index.html:88
+#, fuzzy
+msgid "Ended"
+msgstr "Befejezés"
+
+#: app/templates/events.html:102 app/templates/index.html:102
+msgid "Winner"
+msgstr "Győztes"
+
+#: app/templates/events.html:113 app/templates/index.html:113
+msgid "Leaderboard & Details"
+msgstr "Eredménytábla és Részletek"
+
+#: app/templates/events.html:122 app/templates/index.html:122
+#, fuzzy
+msgid "No past quiz events found."
+msgstr "Nincsenek aktív események"
+
+#: app/templates/index.html:7
+msgid "Welcome to Quiz App"
+msgstr "Üdvözlünk a Quiz App-ban!"
+
+#: app/templates/landing.html:2
+msgid "Welcome"
+msgstr "Üdvözlünk"
+
+#: app/templates/landing.html:9
+msgid "Next Generation Interactive Quiz Platform"
+msgstr "Új generációs interaktív kvíz platform"
+
+#: app/templates/landing.html:12
+msgid "Test Your Knowledge,"
+msgstr "Tedd próbára a tudásod,"
+
+#: app/templates/landing.html:13
+msgid "Compete in Teams, Win Glory."
+msgstr "Versenyezz csapatban, szerezz dicsőséget."
+
+#: app/templates/landing.html:16
+msgid ""
+"Join real-time multi-group quiz championships, form dream teams with "
+"captain invite links, solve varied question types, and climb the live "
+"leaderboards."
+msgstr ""
+"Csatlakozz valós idejű többcsoportos kvíz bajnokságokhoz, hozz létre "
+"álomcsapatot kapitányi meghívóval, oldj meg változatos kérdéseket és "
+"hódítsd meg az élő ranglistákat."
+
+#: app/templates/landing.html:22
+#, fuzzy
+msgid "Explore Quiz Events"
+msgstr "Aktív események"
+
+#: app/templates/landing.html:27
+#, fuzzy
+msgid "Create Free Account"
+msgstr "Esemény létrehozása"
+
+#: app/templates/landing.html:32
+#, fuzzy
+msgid "View Leaderboards"
+msgstr "Csapat Ranglista"
+
+#: app/templates/landing.html:42
+#, fuzzy
+msgid "Live Events"
+msgstr "Aktív események"
+
+#: app/templates/landing.html:48
+#, fuzzy
+msgid "Quizzes Created"
+msgstr "Még nem jött létre kvíz."
+
+#: app/templates/landing.html:54
+#, fuzzy
+msgid "Teams Competing"
+msgstr "Csapatkapitány"
+
+#: app/templates/landing.html:63
+msgid "Why You Will Love Quiz App"
+msgstr "Miért fogod imádni a Quiz App-ot"
+
+#: app/templates/landing.html:64
+msgid ""
+"Built from the ground up for speed, mobile responsiveness, and "
+"competitive excitement."
+msgstr ""
+"Alapoktól a sebességre, mobilbarát használatra és a versenyszerű "
+"izgalmakra tervezve."
+
+#: app/templates/landing.html:74
+msgid "Captain & Team System"
+msgstr "Kapitány- és csapatrendszer"
+
+#: app/templates/landing.html:76
+msgid ""
+"Create your team, receive a unique invite link, and recruit teammates. "
+"Captains maintain full control over membership."
+msgstr ""
+"Hozd létre csapatodat, kapj egyedi meghívó linket és toborozz "
+"csapattársakat. A kapitányok teljes kontrollal bírnak a tagság felett."
+
+#: app/templates/landing.html:87
+msgid "Multi-Group Quizzes"
+msgstr "Többcsoportos kvízek"
+
+#: app/templates/landing.html:89
+msgid ""
+"Solve questions grouped into rounds with page-by-page flow, configurable "
+"backtracking rules, and instant answer feedback."
+msgstr ""
+"Válaszolj körökre osztott kérdéscsoportokra laponkénti navigációval, "
+"konfigurálható visszalépési szabályokkal és azonnali visszajelzéssel."
+
+#: app/templates/landing.html:100
+msgid "Live Scores & Past Archives"
+msgstr "Élő pontok és archívum"
+
+#: app/templates/landing.html:102
+msgid ""
+"Track your standings against other teams in real time and celebrate past "
+"champions in our dedicated event archive."
+msgstr ""
+"Kövesd az állást más csapatokkal szemben valós időben, és tekintsd meg a "
+"korábbi bajnokokat a dedikált archívumban."
+
+#: app/templates/landing.html:113
+#, fuzzy
+msgid "Diverse Question Formats"
+msgstr "Kérdés hozzáadása a következőhöz"
+
+#: app/templates/landing.html:115
+msgid ""
+"From classic multiple choice and multi-select to open-ended free text "
+"with automated or manual review grading."
+msgstr ""
+"A klasszikus feleletválasztóstól és többes jelöléstől a nyílt végű "
+"szabadszavas kérdésekig automatikus vagy kézi felülvizsgálattal."
+
+#: app/templates/landing.html:126
+msgid "Powerful Admin Suite"
+msgstr "Hatékony adminisztráció"
+
+#: app/templates/landing.html:128
+msgid ""
+"Organizers can easily create custom events, design question sets, reorder"
+" rounds, and manually grade open-ended answers."
+msgstr ""
+"A szervezők könnyedén létrehozhatnak egyedi eseményeket, "
+"kérdéscsomagokat, átrendezhetik a köröket és pontozhatják a válaszokat."
+
+#: app/templates/landing.html:139
+#, fuzzy
+msgid "Fully Mobile & Local"
+msgstr "100% mobilbarát és helyi"
+
+#: app/templates/landing.html:141
+msgid ""
+"Zero external CDN dependencies, ultra-fast loading, fully responsive "
+"touch UI, and multilingual support in English and Hungarian."
+msgstr ""
+"Nulla külső CDN függőség, villámgyors betöltés, reszponzív "
+"érintőképernyős felület, és többnyelvű (angol és magyar) támogatás."
+
+#: app/templates/landing.html:153
+#, fuzzy
+msgid "Featured Live Events"
+msgstr "Aktív események"
+
+#: app/templates/landing.html:154
+msgid "Jump straight into active competitions happening right now."
+msgstr "Csatlakozz közvetlenül az éppen most zajló aktív versenyekhez."
+
+#: app/templates/landing.html:157
+#, fuzzy
+msgid "View All Events"
+msgstr "Események"
+
+#: app/templates/landing.html:178
+msgid "Play Now"
+msgstr "Játék most"
+
+#: app/templates/landing.html:191
+msgid "Ready to Test Your Skills?"
+msgstr "Készen állsz tesztelni a tudásodat?"
+
+#: app/templates/landing.html:193
+msgid ""
+"Assemble your team, challenge other players, and climb to the top of the "
+"leaderboard."
+msgstr ""
+"Állítsd össze a csapatodat, hívd ki a többi játékost, és juss fel a "
+"ranglista tetejére."
+
+#: app/templates/landing.html:197
+#, fuzzy
+msgid "Browse All Events"
+msgstr "Események"
+
+#: app/templates/landing.html:201
+#, fuzzy
+msgid "Sign Up Now"
+msgstr "Jelentkezz be"
+
+#: app/templates/admin/add_group.html:2 app/templates/admin/add_group.html:5
+msgid "Add Question Group"
+msgstr "Kérdéscsoport hozzáadása"
+
+#: app/templates/admin/add_group.html:18
+msgid "e.g. Group A / Section 1"
+msgstr "pl. A csoport / 1. szakasz"
+
+#: app/templates/admin/add_group.html:26
+msgid "Optional group instructions or description"
+msgstr "Opcionális csoportutasítások vagy leírás"
+
+#: app/templates/admin/add_group.html:36 app/templates/admin/edit_group.html:36
+msgid "If enabled, users can go back to this group from subsequent groups."
+msgstr ""
+"Ha be van kapcsolva, a kitöltők visszaléphetnek erre a csoportra a "
+"későbbi csoportokból."
+
+#: app/templates/admin/add_group.html:42
+#: app/templates/admin/add_question.html:73
+#: app/templates/admin/create_event.html:37
+#: app/templates/admin/create_quiz.html:43
+#: app/templates/admin/create_team.html:29
+#: app/templates/admin/edit_group.html:42
+#: app/templates/admin/edit_question.html:73
+#: app/templates/quiz/create_team.html:36
+msgid "Cancel"
+msgstr "Mégse"
+
+#: app/templates/admin/add_question.html:2
+#: app/templates/admin/edit_quiz.html:88 app/templates/admin/edit_quiz.html:141
+msgid "Add Question"
+msgstr "Kérdés hozzáadása"
+
+#: app/templates/admin/add_question.html:5
+msgid "Add Question to"
+msgstr "Kérdés hozzáadása a következőhöz"
+
+#: app/templates/admin/add_question.html:20
+#: app/templates/admin/edit_question.html:20
+msgid "Enter question text here..."
+msgstr "Írd be a kérdés szövegét..."
+
+#: app/templates/admin/add_question.html:48
+#: app/templates/admin/edit_question.html:48
+msgid "a, b, c, d or comma-separated for multiple"
+msgstr "a, b, c, d vagy több válasz esetén pl. a,b,c"
+
+#: app/templates/admin/add_question.html:49
+#: app/templates/admin/edit_question.html:49
+msgid "For multiple select: comma-separated like a,b,c"
+msgstr "Több helyes válasz esetén: vesszővel elválasztva, pl. a,c"
+
+#: app/templates/admin/add_question.html:54
+#: app/templates/admin/edit_question.html:54
+msgid "Enter correct answers (one per line)"
+msgstr "Írd be a helyes válaszokat (soronként egyet)"
+
+#: app/templates/admin/add_question.html:55
+#: app/templates/admin/edit_question.html:55
+msgid "For free-text questions, enter all acceptable answers (one per line)"
+msgstr ""
+"Szabad szavas kérdéseknél add meg az összes elfogadható választ "
+"(soronként egyet)"
+
+#: app/templates/admin/add_question.html:63
+#: app/templates/admin/edit_question.html:63
+msgid "Enable manual review for free-text answers"
+msgstr "Kézi felülvizsgálat engedélyezése a szabad szavas válaszokhoz"
+
+#: app/templates/admin/create_event.html:6
+msgid "Schedule a new quiz event"
+msgstr "Új kvízesemény ütemezése"
+
+#: app/templates/admin/create_event.html:17
+msgid "Enter event name"
+msgstr "Add meg az esemény nevét"
+
+#: app/templates/admin/create_event.html:21
+msgid "Enter event description"
+msgstr "Add meg az esemény leírását"
+
+#: app/templates/admin/create_quiz.html:2
+#: app/templates/admin/create_quiz.html:5 app/templates/admin/dashboard.html:15
+msgid "Create Quiz"
+msgstr "Kvíz létrehozása"
+
+#: app/templates/admin/create_quiz.html:6
+msgid "Create a new quiz and add questions"
+msgstr "Hozz létre egy új kvízt és adj hozzá kérdéseket"
+
+#: app/templates/admin/create_quiz.html:17
+msgid "Enter quiz title"
+msgstr "Add meg a kvíz címét"
+
+#: app/templates/admin/create_quiz.html:21
+msgid "Enter quiz description"
+msgstr "Add meg a kvíz leírását"
+
+#: app/templates/admin/create_quiz.html:24
+msgid "Quiz Settings & Feedback"
+msgstr "Kvíz beállítások és visszajelzés"
+
+#: app/templates/admin/create_quiz.html:28
+#: app/templates/admin/edit_quiz.html:28
+msgid ""
+"Show immediate correct/incorrect feedback right after answering each "
+"question."
+msgstr ""
+"Azonnali helyes/helytelen visszajelzés megjelenítése minden kérdés "
+"megválaszolása után."
+
+#: app/templates/admin/create_quiz.html:33
+#: app/templates/admin/edit_quiz.html:33
+msgid "Display total earned points and percentage on the final quiz summary page."
+msgstr ""
+"Összesített elért pontszám és százalék megjelenítése a záró összefoglaló "
+"oldalon."
+
+#: app/templates/admin/create_quiz.html:38
+#: app/templates/admin/edit_quiz.html:38
+msgid "Display correct answers and comparison on the final quiz summary page."
+msgstr ""
+"Helyes válaszok és összehasonlítás megjelenítése a záró összefoglaló "
+"oldalon."
+
+#: app/templates/admin/create_team.html:6
+msgid "Create a new team for an event"
+msgstr "Hozz létre egy új csapatot az eseményhez"
+
+#: app/templates/admin/create_team.html:17
+msgid "Enter team name"
+msgstr "Add meg a csapat nevét"
+
+#: app/templates/admin/dashboard.html:2 app/templates/admin/dashboard.html:5
+msgid "Admin Dashboard"
+msgstr "Adminisztrátori vezérlőpult"
+
+#: app/templates/admin/dashboard.html:6
+msgid "Manage quizzes, events, and teams"
+msgstr "Kvízek, események és csapatok kezelése"
+
+#: app/templates/admin/dashboard.html:13
+msgid "Quizzes"
+msgstr "Kvízek"
+
+#: app/templates/admin/dashboard.html:27 app/templates/admin/dashboard.html:70
+#: app/templates/admin/dashboard.html:125
+msgid "Actions"
+msgstr "Műveletek"
+
+#: app/templates/admin/dashboard.html:37 app/templates/admin/edit_quiz.html:70
+#: app/templates/admin/edit_quiz.html:126
+msgid "Edit"
+msgstr "Szerkesztés"
+
+#: app/templates/admin/dashboard.html:46
+msgid "No quizzes created yet."
+msgstr "Még nem jött létre kvíz."
+
+#: app/templates/admin/dashboard.html:47
+msgid "Create your first quiz"
+msgstr "Hozd létre az első kvízedet"
+
+#: app/templates/admin/dashboard.html:66 app/templates/admin/dashboard.html:120
+msgid "Name"
+msgstr "Név"
+
+#: app/templates/admin/dashboard.html:69
+msgid "Status"
+msgstr "Állapot"
+
+#: app/templates/admin/dashboard.html:83
+msgid "Inactive"
+msgstr "Inaktív"
+
+#: app/templates/admin/dashboard.html:89
+msgid "Toggle"
+msgstr "Állapot váltása"
+
+#: app/templates/admin/dashboard.html:100
+msgid "No events created yet."
+msgstr "Még nem jött létre esemény."
+
+#: app/templates/admin/dashboard.html:101
+msgid "Create your first event"
+msgstr "Hozd létre az első eseményedet"
+
+#: app/templates/admin/dashboard.html:122
+msgid "Members"
+msgstr "Tagok"
+
+#: app/templates/admin/dashboard.html:123
+msgid "Max Size"
+msgstr "Max. létszám"
+
+#: app/templates/admin/dashboard.html:124 app/templates/quiz/quiz.html:19
+msgid "Score"
+msgstr "Pontszám"
+
+#: app/templates/admin/dashboard.html:138 app/templates/admin/edit_quiz.html:72
+#: app/templates/admin/edit_quiz.html:128
+msgid "Delete"
+msgstr "Törlés"
+
+#: app/templates/admin/dashboard.html:148
+msgid "No teams created yet."
+msgstr "Még nem jött létre csapat."
+
+#: app/templates/admin/dashboard.html:149
+msgid "Create your first team"
+msgstr "Hozd létre az első csapatodat"
+
+#: app/templates/admin/edit_group.html:2 app/templates/admin/edit_group.html:5
+msgid "Edit Question Group"
+msgstr "Kérdéscsoport szerkesztése"
+
+#: app/templates/admin/edit_question.html:2
+#: app/templates/admin/edit_question.html:5
+msgid "Edit Question"
+msgstr "Kérdés szerkesztése"
+
+#: app/templates/admin/edit_quiz.html:2 app/templates/admin/edit_quiz.html:5
+msgid "Edit Quiz"
+msgstr "Kvíz szerkesztése"
+
+#: app/templates/admin/edit_quiz.html:12
+msgid "Quiz Details & Settings"
+msgstr "Kvíz részletei és beállításai"
+
+#: app/templates/admin/edit_quiz.html:24
+msgid "Feedback & End Screen Options"
+msgstr "Visszajelzési és befejezési opciók"
+
+#: app/templates/admin/edit_quiz.html:50
+msgid "Question Groups / Pages"
+msgstr "Kérdéscsoportok / Lapok"
+
+#: app/templates/admin/edit_quiz.html:51 app/templates/admin/edit_quiz.html:91
+msgid "Add Group"
+msgstr "Csoport hozzáadása"
+
+#: app/templates/admin/edit_quiz.html:61
+#: app/templates/quiz/event_detail.html:42
+msgid "questions"
+msgstr "kérdés"
+
+#: app/templates/admin/edit_quiz.html:63
+msgid "Backtrack allowed"
+msgstr "Visszalépés engedélyezve"
+
+#: app/templates/admin/edit_quiz.html:65
+msgid "No backtrack"
+msgstr "Nincs visszalépés"
+
+#: app/templates/admin/edit_quiz.html:80
+msgid ""
+"No groups created yet. All questions will appear on a single page by "
+"default."
+msgstr ""
+"Még nincsenek csoportok létrehozva. Alapértelmezés szerint minden kérdés "
+"egyetlen lapon jelenik meg."
+
+#: app/templates/admin/edit_quiz.html:94
+msgid "Back to Dashboard"
+msgstr "Vissza a vezérlőpultra"
+
+#: app/templates/admin/edit_quiz.html:102
+msgid "Drag to reorder questions"
+msgstr "Húzd a kérdéseket az átrendezéshez"
+
+#: app/templates/admin/edit_quiz.html:122 app/templates/quiz/quiz.html:74
+msgid "points"
+msgstr "pont"
+
+#: app/templates/admin/edit_quiz.html:139
+msgid "No questions yet"
+msgstr "Még nincsenek kérdések"
+
+#: app/templates/admin/edit_quiz.html:140
+msgid "Add your first question to get started!"
+msgstr "Adj hozzá kérdést a kezdéshez!"
+
+#: app/templates/auth/login.html:6
+msgid "Welcome back! Log in to continue."
+msgstr "Üdv újra! Jelentkezz be a folytatáshoz."
+
+#: app/templates/auth/login.html:17
+msgid "Enter your username"
+msgstr "Add meg a felhasználóneved"
+
+#: app/templates/auth/login.html:24
+msgid "Enter your password"
+msgstr "Add meg a jelszavad"
+
+#: app/templates/auth/login.html:38
+msgid "New user?"
+msgstr "Új felhasználó vagy?"
+
+#: app/templates/auth/login.html:38
+msgid "Register here"
+msgstr "Regisztrálj itt"
+
+#: app/templates/auth/register.html:6
+msgid "Create an account to join quiz events!"
+msgstr "Hozz létre egy fiókot a kvízeseményeken való részvételhez!"
+
+#: app/templates/auth/register.html:17
+msgid "Choose a username"
+msgstr "Válassz felhasználónevet"
+
+#: app/templates/auth/register.html:24
+msgid "Enter your email"
+msgstr "Add meg az e-mail címed"
+
+#: app/templates/auth/register.html:31
+msgid "Create a password"
+msgstr "Adj meg egy jelszót"
+
+#: app/templates/auth/register.html:38
+msgid "Repeat your password"
+msgstr "Ismételd meg a jelszót"
+
+#: app/templates/auth/register.html:48
+msgid "Already have an account?"
+msgstr "Már van fiókod?"
+
+#: app/templates/auth/register.html:48
+msgid "Sign in"
+msgstr "Jelentkezz be"
+
+#: app/templates/quiz/create_team.html:8
+#, fuzzy
+msgid "Register a Team"
+msgstr "Regisztrálj itt"
+
+#: app/templates/quiz/create_team.html:16
+msgid ""
+"As the team creator, you will become the Team Captain. Only you will be "
+"able to invite other players using a unique invite link."
+msgstr ""
+"A csapat létrehozójaként te leszel a Csapatkapitány. Csak te hívhatsz meg"
+" más játékosokat az egyedi meghívó link segítségével."
+
+#: app/templates/quiz/create_team.html:22
+msgid "e.g. Brainiacs"
+msgstr "pl. Észbontók"
+
+#: app/templates/quiz/event_detail.html:19 app/templates/quiz/results.html:58
+msgid "Event Details"
+msgstr "Esemény részletei"
+
+#: app/templates/quiz/event_detail.html:48
+msgid "Team Leaderboard"
+msgstr "Csapat Ranglista"
+
+#: app/templates/quiz/event_detail.html:62
+msgid "Captain"
+msgstr "Kapitány"
+
+#: app/templates/quiz/event_detail.html:67
+#: app/templates/quiz/event_detail.html:96
+#, fuzzy
+msgid "pts"
+msgstr "pont"
+
+#: app/templates/quiz/event_detail.html:72
+#, fuzzy
+msgid "No teams registered yet."
+msgstr "Még nem jött létre csapat."
+
+#: app/templates/quiz/event_detail.html:84
+msgid "Your Team & Participation"
+msgstr "A Csapatod és Részvétel"
+
+#: app/templates/quiz/event_detail.html:92 app/templates/quiz/quiz.html:15
+#: app/templates/quiz/results.html:26
+msgid "Team"
+msgstr "Csapat"
+
+#: app/templates/quiz/event_detail.html:103
+#, fuzzy
+msgid "Team Members"
+msgstr "tag"
+
+#: app/templates/quiz/event_detail.html:110
+msgid "Team Captain"
+msgstr "Csapatkapitány"
+
+#: app/templates/quiz/event_detail.html:116
+msgid "You"
+msgstr "Te"
+
+#: app/templates/quiz/event_detail.html:123
+#, fuzzy
+msgid "Remove member"
+msgstr "Emlékezz rám"
+
+#: app/templates/quiz/event_detail.html:125
+msgid "Remove"
+msgstr "Eltávolítás"
+
+#: app/templates/quiz/event_detail.html:139
+msgid "Team Invite Link"
+msgstr "Csapat Meghívó Link"
+
+#: app/templates/quiz/event_detail.html:142
+msgid ""
+"Share this link with your teammates. Only you as captain can invite new "
+"members."
+msgstr ""
+"Oszd meg ezt a linket a csapattársaiddal. Csak te hívhatsz meg új tagokat"
+" csapatkapitányként."
+
+#: app/templates/quiz/event_detail.html:148
+msgid "Copy"
+msgstr "Másolás"
+
+#: app/templates/quiz/event_detail.html:153
+msgid "Regenerate invite link"
+msgstr "Meghívó link újragenerálása"
+
+#: app/templates/quiz/event_detail.html:165
+#, fuzzy
+msgid "View Your Results"
+msgstr "Eredmények betöltése..."
+
+#: app/templates/quiz/event_detail.html:170
+#, fuzzy
+msgid "Start / Continue Quiz"
+msgstr "Kvíz indítása"
+
+#: app/templates/quiz/event_detail.html:174
+#, fuzzy
+msgid "View Results"
+msgstr "Kvíz eredmények"
+
+#: app/templates/quiz/event_detail.html:180
+msgid "Leave Team"
+msgstr "Csapat elhagyása"
+
+#: app/templates/quiz/event_detail.html:190
+#, python-format
+msgid ""
+"You are already in a team (%(team)s) for another event. You can only "
+"belong to one team at a time."
+msgstr ""
+"Már tagja vagy a(z) %(team)s csapatnak egy másik eseménynél. Egyszerre "
+"csak egy csapathoz tartozhatsz."
+
+#: app/templates/quiz/event_detail.html:192
+#, fuzzy
+msgid "Leave current team"
+msgstr "Csapat elhagyása"
+
+#: app/templates/quiz/event_detail.html:198
+msgid "Ready to play?"
+msgstr "Készen állsz a játékra?"
+
+#: app/templates/quiz/event_detail.html:200
+msgid ""
+"You can register a new team and invite your friends as team captain, or "
+"use an invite link sent by your team captain."
+msgstr ""
+"Regisztrálhatsz új csapatot és meghívhatod barátaidat csapatkapitányként,"
+" vagy használhatsz egy meghívó linket, amit a csapatkapitányod küldött."
+
+#: app/templates/quiz/event_detail.html:205
+msgid "Register a Team (Be Captain)"
+msgstr "Csapat regisztrálása (Legyél Kapitány)"
+
+#: app/templates/quiz/event_detail.html:208
+msgid "Event is closed for new team registrations."
+msgstr "Az esemény lezárult az új csapatregisztrációk előtt."
+
+#: app/templates/quiz/event_detail.html:214
+msgid "Please log in or register to participate in this quiz event."
+msgstr ""
+"Kérjük, jelentkezz be vagy regisztrálj a részvételhez ebben a kvíz "
+"eseményben."
+
+#: app/templates/quiz/event_detail.html:224
+msgid "How team membership works"
+msgstr "Hogyan működik a csapatkezelés"
+
+#: app/templates/quiz/event_detail.html:226
+msgid "Each player can belong to only one team at a time."
+msgstr "Minden játékos egyszerre csak egy csapathoz tartozhat."
+
+#: app/templates/quiz/event_detail.html:227
+msgid "Anyone can create a team and become Team Captain."
+msgstr "Bárki létrehozhat csapatot és Csapatkapitánnyá válhat."
+
+#: app/templates/quiz/event_detail.html:228
+msgid "Only the captain can invite teammates via private invite link."
+msgstr "Csak a kapitány hívhat meg csapattársakat privát meghívó linken keresztül."
+
+#: app/templates/quiz/event_detail.html:229
+msgid "Captains can manage and remove members if needed."
+msgstr "A kapitányok szükség esetén kezelhetik és eltávolíthatják a tagokat."
+
+#: app/templates/quiz/event_detail.html:248
+msgid "Copied!"
+msgstr "Másolva!"
+
+#: app/templates/quiz/quiz.html:28
+msgid "Group 1 of 1"
+msgstr "1 / 1 csoport"
+
+#: app/templates/quiz/quiz.html:31 app/templates/quiz/quiz.html:72
+#: app/templates/quiz/results.html:89
+msgid "answered"
+msgstr "megválaszolva"
+
+#: app/templates/quiz/quiz.html:42
+msgid "Loading quiz questions..."
+msgstr "Kvízkérdések betöltése..."
+
+#: app/templates/quiz/quiz.html:50
+msgid "Previous Group"
+msgstr "Előző csoport"
+
+#: app/templates/quiz/quiz.html:54
+msgid "Next Group"
+msgstr "Következő csoport"
+
+#: app/templates/quiz/quiz.html:57
+msgid "Finish Quiz & See Results"
+msgstr "Kvíz befejezése & Eredmények megtekintése"
+
+#: app/templates/quiz/quiz.html:70
+msgid "Group"
+msgstr "Csoport"
+
+#: app/templates/quiz/quiz.html:71
+msgid "of"
+msgstr "/"
+
+#: app/templates/quiz/quiz.html:77 app/templates/quiz/results.html:102
+msgid "Under Review"
+msgstr "Ellenőrzés alatt"
+
+#: app/templates/quiz/quiz.html:78 app/templates/quiz/results.html:104
+msgid "Correct"
+msgstr "Helyes"
+
+#: app/templates/quiz/quiz.html:79 app/templates/quiz/results.html:106
+msgid "Incorrect"
+msgstr "Helytelen"
+
+#: app/templates/quiz/quiz.html:80 app/templates/quiz/results.html:122
+msgid "Your Answer"
+msgstr "A te válaszod"
+
+#: app/templates/quiz/quiz.html:81
+msgid "Enter your answer here..."
+msgstr "Írd be ide a válaszod..."
+
+#: app/templates/quiz/quiz.html:82
+msgid "This answer will be reviewed manually."
+msgstr "Ez a válasz kézi ellenőrzésen esik át."
+
+#: app/templates/quiz/quiz.html:83
+msgid "Select all correct answers"
+msgstr "Válaszd ki az összes helyes választ"
+
+#: app/templates/quiz/quiz.html:84
+msgid "Submit Answer"
+msgstr "Válasz beküldése"
+
+#: app/templates/quiz/quiz.html:85
+msgid "Submitting..."
+msgstr "Beküldés folyamatban..."
+
+#: app/templates/quiz/quiz.html:87
+msgid "Returning to this group is disabled."
+msgstr "A visszalépés erre a csoportra le van tiltva."
+
+#: app/templates/quiz/quiz.html:88
+msgid ""
+"Are you sure you want to finish the quiz? You will not be able to modify "
+"your answers afterwards."
+msgstr ""
+"Biztosan befejezed a kvízt? Ezt követően már nem módosíthatod a "
+"válaszaidat."
+
+#: app/templates/quiz/results.html:2
+msgid "Quiz Results"
+msgstr "Kvíz eredmények"
+
+#: app/templates/quiz/results.html:8
+msgid "Quiz Completed!"
+msgstr "Kvíz befejezve!"
+
+#: app/templates/quiz/results.html:17
+msgid "Loading your results..."
+msgstr "Eredmények betöltése..."
+
+#: app/templates/quiz/results.html:32
+msgid "Your Score"
+msgstr "Elért pontszámod"
+
+#: app/templates/quiz/results.html:39
+msgid "Team Total Score"
+msgstr "Csapat összesített pontszáma"
+
+#: app/templates/quiz/results.html:48
+msgid "Question Breakdown"
+msgstr "Kérdések részletezése"
+
+#: app/templates/quiz/results.html:61
+#, fuzzy
+msgid "Home / Events"
+msgstr "Események"
+
+#: app/templates/quiz/results.html:84
+#, fuzzy
+msgid "correct"
+msgstr "Helyes"
+
+#: app/templates/quiz/results.html:100
+msgid "Not Answered"
+msgstr "Nincs megválaszolva"
+
+#: app/templates/quiz/results.html:137
+msgid "Correct Answer"
+msgstr "Helyes válasz"
+
+#: app/templates/quiz/results.html:149
+msgid "Error loading results. Please try again."
+msgstr "Hiba történt az eredmények betöltésekor. Kérjük, próbáld újra."
+
+#~ msgid "Joined team successfully"
+#~ msgstr "Sikeresen csatlakoztál a csapathoz."
+
+#~ msgid "View Event"
+#~ msgstr "Esemény megtekintése"
+
+#~ msgid "Your Team"
+#~ msgstr "A te csapatod"
+
+#~ msgid "Event is Inactive"
+#~ msgstr "Az esemény inaktív"
+
+#~ msgid "You are not in a team for this event."
+#~ msgstr "Nem vagy csapat tagja ehhez az eseményhez."
+
+#~ msgid "Available Teams"
+#~ msgstr "Elérhető csapatok"
+
+#~ msgid "Join"
+#~ msgstr "Csatlakozás"
+
+#~ msgid "Full"
+#~ msgstr "Megtelt"
+
+#~ msgid "No teams available for this event."
+#~ msgstr "Nincsenek elérhető csapatok ehhez az eseményhez."
+
+#~ msgid "Progress"
+#~ msgstr "Haladás"
+
+#~ msgid "(No answer submitted)"
+#~ msgstr "(Nem érkezett válasz)"
+

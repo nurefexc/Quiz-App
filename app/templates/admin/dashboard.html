@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Admin Dashboard') }} - Quiz App{% endblock %}
+{% block content %}
+<div class="hero-section">
+    <h1 class="hero-title">{{ _('Admin Dashboard') }}</h1>
+    <p class="lead">{{ _('Manage quizzes, events, and teams') }}</p>
+</div>
+
+<div class="row g-4 mt-2">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <h5 class="mb-0 text-light">{{ _('Quizzes') }} ({{ quizzes|length }})</h5>
+                <a href="{{ url_for('admin.create_quiz') }}" class="btn btn-primary btn-sm">
+                    <span>+ {{ _('Create Quiz') }}</span>
+                </a>
+            </div>
+            <div class="card-body p-0">
+                {% if quizzes %}
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>{{ _('Title') }}</th>
+                                    <th>{{ _('Description') }}</th>
+                                    <th>{{ _('Questions') }}</th>
+                                    <th class="text-end">{{ _('Actions') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for quiz in quizzes %}
+                                <tr>
+                                    <td><strong class="text-light">{{ quiz.title }}</strong></td>
+                                    <td class="text-secondary">{{ quiz.description[:50] if quiz.description else '' }}{% if quiz.description and quiz.description|length > 50 %}...{% endif %}</td>
+                                    <td><span class="badge bg-primary">{{ quiz.questions.count() }}</span></td>
+                                    <td class="text-end">
+                                        <a href="{{ url_for('admin.edit_quiz', quiz_id=quiz.id) }}" class="btn btn-sm btn-info">{{ _('Edit') }}</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center py-4 p-3">
+                        <p class="text-secondary mb-3">{{ _('No quizzes created yet.') }}</p>
+                        <a href="{{ url_for('admin.create_quiz') }}" class="btn btn-primary btn-sm">{{ _('Create your first quiz') }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <h5 class="mb-0 text-light">{{ _('Events') }} ({{ events|length }})</h5>
+                <a href="{{ url_for('admin.create_event') }}" class="btn btn-primary btn-sm">
+                    <span>+ {{ _('Create Event') }}</span>
+                </a>
+            </div>
+            <div class="card-body p-0">
+                {% if events %}
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>{{ _('Name') }}</th>
+                                    <th>{{ _('Start') }}</th>
+                                    <th>{{ _('End') }}</th>
+                                    <th>{{ _('Status') }}</th>
+                                    <th class="text-end">{{ _('Actions') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for event in events %}
+                                <tr>
+                                    <td><strong class="text-light">{{ event.name }}</strong></td>
+                                    <td class="text-secondary">{{ event.start_time.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td class="text-secondary">{{ event.end_time.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td>
+                                        {% if event.is_active %}
+                                            <span class="badge bg-success">{{ _('Active') }}</span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">{{ _('Inactive') }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-end">
+                                        <form action="{{ url_for('admin.toggle_event', event_id=event.id) }}" method="POST" class="d-inline">
+                                            <button type="submit" class="btn btn-sm btn-warning">
+                                                {{ _('Toggle') }}
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center py-4 p-3">
+                        <p class="text-secondary mb-3">{{ _('No events created yet.') }}</p>
+                        <a href="{{ url_for('admin.create_event') }}" class="btn btn-primary btn-sm">{{ _('Create your first event') }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <h5 class="mb-0 text-light">{{ _('Teams') }} ({{ teams|length }})</h5>
+                <a href="{{ url_for('admin.create_team') }}" class="btn btn-primary btn-sm">
+                    <span>+ {{ _('Create Team') }}</span>
+                </a>
+            </div>
+            <div class="card-body p-0">
+                {% if teams %}
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>{{ _('Name') }}</th>
+                                    <th>{{ _('Event') }}</th>
+                                    <th>{{ _('Members') }}</th>
+                                    <th>{{ _('Max Size') }}</th>
+                                    <th>{{ _('Score') }}</th>
+                                    <th class="text-end">{{ _('Actions') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for team in teams %}
+                                <tr>
+                                    <td><strong class="text-light">{{ team.name }}</strong></td>
+                                    <td class="text-secondary">{{ team.event.name }}</td>
+                                    <td><span class="badge bg-info">{{ team.members|length }}</span></td>
+                                    <td class="text-secondary">{{ team.max_size }}</td>
+                                    <td><span class="score-display fs-5">{{ team.score }}</span></td>
+                                    <td class="text-end">
+                                        <form action="{{ url_for('admin.delete_team', team_id=team.id) }}" method="POST" class="d-inline">
+                                            <button type="submit" class="btn btn-sm btn-danger">{{ _('Delete') }}</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center py-4 p-3">
+                        <p class="text-secondary mb-3">{{ _('No teams created yet.') }}</p>
+                        <a href="{{ url_for('admin.create_team') }}" class="btn btn-primary btn-sm">{{ _('Create your first team') }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

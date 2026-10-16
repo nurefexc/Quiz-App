@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card" style="max-width: 500px; margin: 0 auto;">
+    <div class="card-header">
+        <h2 style="font-size: 1.25rem; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+            <img src="{{ url_for('static', filename='icons/crown.svg') }}" class="icon" alt="" style="color: var(--primary);">
+            {{ _('Register a Team') }}
+        </h2>
+    </div>
+    <div class="card-body">
+        <p style="color: var(--text-secondary); margin-bottom: 1.25rem;">
+            {{ _('Event') }}: <strong>{{ event.name }}</strong>
+        </p>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.25rem;">
+            {{ _('As the team creator, you will become the Team Captain. Only you will be able to invite other players using a unique invite link.') }}
+        </p>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.name.label(class="form-label") }}
+                {{ form.name(class="form-control", placeholder=_('e.g. Brainiacs')) }}
+                {% for error in form.name.errors %}
+                    <span class="text-danger" style="font-size: 0.85rem; color: #ef4444;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.max_size.label(class="form-label") }}
+                {{ form.max_size(class="form-control", type="number", min="1", max="20") }}
+                {% for error in form.max_size.errors %}
+                    <span class="text-danger" style="font-size: 0.85rem; color: #ef4444;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+                {{ form.submit(class="btn btn-primary", style="flex: 1;") }}
+                <a href="{{ url_for('quiz.event_detail', event_id=event.id) }}" class="btn btn-outline">{{ _('Cancel') }}</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
